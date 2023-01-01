@@ -1,11 +1,11 @@
-export { command, type CommandOptions as Command, type CommandFn } from './functions/command';
-export { conditional, type ConditionalOptions as Conditional, type ConditionalFn } from './functions/conditional';
-export { lifecycle, type LifecycleOptions as Lifecycle, type LifecycleFn } from './functions/lifecycle';
-export { optional, type OptionalOptions as Optional, type OptionalFn } from './functions/optional';
-export { parallel, type ParallelOptions as Parallel, type ParallelFn } from './functions/parallel';
-export { repeat, type RepeatOptions as Repeat, type RepeatFn } from './functions/repeat';
-export { scripts, scripts as variants, type ScriptsOptions as Scripts, type ScriptsFn } from './functions/scripts';
-export { sequential, type SequentialOptions as Sequential, type SequentialFn } from './functions/sequential';
+export { command, type CommandOptions, type CommandFn } from './functions/command';
+export { conditional, type ConditionalOptions, type ConditionalFn } from './functions/conditional';
+export { lifecycle, type LifecycleOptions, type LifecycleFn } from './functions/lifecycle';
+export { optional, type OptionalOptions, type OptionalFn } from './functions/optional';
+export { parallel, type ParallelOptions, type ParallelFn } from './functions/parallel';
+export { repeat, type RepeatOptions, type RepeatFn } from './functions/repeat';
+export { scripts, scripts as variants, type ScriptsOptions, type ScriptsOptions as VariantsOptions, type ScriptsFn, type ScriptsFn as VariantsFn } from './functions/scripts';
+export { sequential, type SequentialOptions, type SequentialFn } from './functions/sequential';
 
 export type { BaseAction, Action } from './types/Action';
 export type { FunctionCallProps } from './types/FunctionCallProps';
