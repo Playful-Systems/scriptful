@@ -13,7 +13,7 @@ export type CommandOptions = {
   env?: Record<string, string> // env vars to set
   cwd?: string // the directory to run the command in
   hideLogs?: boolean // hide or show the logs
-  restartOnFail?: boolean // restart the command if it fails
+  // restartOnFail?: boolean // restart the command if it fails
 }
 
 const combineEnv = async (env: Record<string, string> = {}, envFile?: string) => {
