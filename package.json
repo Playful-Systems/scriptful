@@ -10,7 +10,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "trouble build",
-    "dev": "trouble dev"
+    "dev": "trouble dev",
+    "release": "trouble release"
   },
   "repository": "https://github.com/Playful-Systems/trouble-maker",
   "files": [
