@@ -13,13 +13,9 @@ export const run = (task: string, options?: Options, spawnOptions?: SpawnOptions
 
     const child = spawn(command, args, {
       shell: true,
+      stdio: options?.showLogs ? "inherit" : "pipe",
       ...spawnOptions
     })
-
-    if (options?.showLogs) {
-      child.stdout?.pipe(process.stdout)
-      child.stderr?.pipe(process.stderr)
-    }
 
     child.on("error", (error) => {
       reject(error)
