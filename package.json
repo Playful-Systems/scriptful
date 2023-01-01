@@ -1,30 +1,57 @@
 {
   "name": "trouble-maker",
   "version": "1.0.0",
-  "description": "",
+  "description": "Better package.json scripts for complex projects",
   "bin": {
-    "trouble": "dist/cli.js",
-    "trouble-maker": "dist/cli.js"
+    "trouble": "./dist/cli.js",
+    "trouble-maker": "./dist/cli.js"
   },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "trouble build",
+    "dev": "trouble dev"
   },
-  "keywords": [],
-  "author": "",
+  "repository": "https://github.com/Playful-Systems/trouble-maker",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "scripts",
+    "bash",
+    "shell",
+    "cli",
+    "command",
+    "line",
+    "interface",
+    "npm",
+    "package.json",
+    "trouble-maker",
+    "trouble",
+    "troublemaker"
+  ],
+  "author": {
+    "name": "Playful Systems",
+    "email": "packages@playful-systems.com.au",
+    "url": "https://playful-systems.com.au/"
+  },
+  "contributors": [
+    "Nick Wylynko <nick@wylynko.com> (https://nick.wylynko.com/)"
+  ],
   "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "cross-spawn": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "ts-node": "^10.9.1"
+  },
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
     "@types/cross-spawn": "^6.0.2",
     "@types/esm": "^3.2.0",
     "@types/node": "^18.11.18",
     "@types/shell-quote": "^1.7.1",
+    "bumpp": "^8.2.1",
     "typescript": "^4.9.4"
-  },
-  "dependencies": {
-    "cross-spawn": "^7.0.3",
-    "dotenv": "^16.0.3",
-    "ts-node": "^10.9.1"
   }
 }
