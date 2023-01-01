@@ -7,7 +7,7 @@ export { repeat, type RepeatOptions, type RepeatFn } from './functions/repeat';
 export { scripts, scripts as variants, type ScriptsOptions, type ScriptsOptions as VariantsOptions, type ScriptsFn, type ScriptsFn as VariantsFn } from './functions/scripts';
 export { sequential, type SequentialOptions, type SequentialFn } from './functions/sequential';
 
-export type { BaseAction, Action } from './types/Action';
+export type { BaseAction, ActionFns, Action } from './types/Action';
 export type { FunctionCallProps } from './types/FunctionCallProps';
 
 export { cli } from './cli/index';
