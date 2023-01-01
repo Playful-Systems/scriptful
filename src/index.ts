@@ -8,8 +8,9 @@ export { scripts, scripts as variants, type ScriptsOptions, type ScriptsOptions 
 export { sequential, type SequentialOptions, type SequentialFn } from './functions/sequential';
 
 export type { BaseAction, ActionFns, Action } from './types/Action';
-export type { FunctionCallProps } from './types/FunctionCallProps';
 
+
+// your not supposed to use these, but if you want to, im not going to stop you
 export { cli } from './cli/index';
 export { findFunction } from './cli/findFunction';
 export { getCommand } from './cli/getCommand';
