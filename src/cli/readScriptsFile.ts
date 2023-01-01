@@ -2,12 +2,18 @@ import { readFile } from "fs/promises";
 
 const filePaths = [
   './scripts',
-  './scripty',
+  './script',
+  './trouble',
+  './trouble.config',
 ] as const
 
 const fileExtensions = [
   '.js',
+  '.mjs',
+  '.cjs',
   '.ts',
+  '.mts',
+  '.cts',
 ] as const
 
 export const readScriptsFile = async () => {

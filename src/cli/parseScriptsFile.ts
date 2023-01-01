@@ -5,7 +5,6 @@ import type { ScriptsFn } from "../functions/scripts";
 type opts = {
   file: string,
   filePath: string,
-  extension: ".js" | ".ts",
 }
 
 const typescript = create({

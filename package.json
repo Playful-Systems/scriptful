@@ -1,10 +1,10 @@
 {
-  "name": "better-scripts",
+  "name": "trouble-maker",
   "version": "1.0.0",
   "description": "",
   "bin": {
-    "scripty": "dist/cli.js",
-    "s": "dist/cli.js"
+    "trouble": "dist/cli.js",
+    "trouble-maker": "dist/cli.js"
   },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,7 +13,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@tsconfig/node18": "^1.0.1",
     "@types/cross-spawn": "^6.0.2",
