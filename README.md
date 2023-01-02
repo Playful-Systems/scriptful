@@ -286,18 +286,18 @@ export default scripts({
 say you want a "build:debug", "build:local" and "build:prod", use variants function to create them. It takes an object with the variants as keys and the commands as values.
 
 ```ts
-import { scripts, variants, lifecycle, sequential } from 'trouble-maker'
+import { scripts, variants, lifecycle, sequential, optional } from 'trouble-maker'
 
 export default scripts({
   "build": variants({
-    debug: sequential([
+    "debug": sequential([
       "tsc --noEmit",
       "vitest",
       "next dev"
     ]),
-    local: lifecycle({
+    "local": lifecycle({
       start: sequential([
-        "docker-compose up -d"
+        "docker-compose up -d",
         "prisma generate",
         "prisma db push",
       ]),
@@ -307,7 +307,7 @@ export default scripts({
       ]),
       stop: "docker-compose down"
     }),
-    prod: sequential([
+    "prod": sequential([
       "prisma generate",
       "prisma migrate deploy",
       "next build",

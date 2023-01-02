@@ -1,6 +1,7 @@
 import { findFunction } from "./findFunction";
 import { getCommand } from "./getCommand";
 import { HelpScreen } from "./helpScreen";
+import { packageScripts } from "./packageScripts";
 import { parseScriptsFile } from "./parseScriptsFile";
 import { readScriptsFile } from "./readScriptsFile";
 
@@ -18,6 +19,17 @@ export const cli = async () => {
   // if the user didn't specify a command, or if they specified --help, show the help screen
   if (!command || command === "--help") {
     HelpScreen(getScripts)
+    return;
+  }
+
+  if (command === "--version") {
+    const { version } = require("../../package.json");
+    console.log(`v${version}`)
+    return;
+  }
+
+  if (["--generate", "-g"].includes(command)) {
+    packageScripts(getScripts)
     return;
   }
 

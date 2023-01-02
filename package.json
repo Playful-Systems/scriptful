@@ -41,6 +41,13 @@
   ],
   "license": "MIT",
   "sideEffects": false,
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "dependencies": {
     "cross-spawn": "^7.0.3",
     "dotenv": "^16.0.3",
