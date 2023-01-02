@@ -1,6 +1,9 @@
 # Scriptful
 Create better package.json scripts
 
+## Why?
+I love the simplicity of package.json scripts, they are easy to understand and easy to use. But they are limited, they can only run one command at a time, and they can't be reused. This is where Scriptful comes in, it allows you to write your scripts in typescript, and gives you the ability to run multiple commands at once, and reuse them. It also gives you the ability to run scripts in parallel or sequentially, and even conditionally. 
+
 ## Setup
 
 ### Install the package with one of these
