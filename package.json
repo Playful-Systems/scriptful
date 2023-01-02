@@ -1,6 +1,6 @@
 {
   "name": "scriptful",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Better package.json scripts for complex projects",
   "bin": {
     "script": "./dist/cli.js",
