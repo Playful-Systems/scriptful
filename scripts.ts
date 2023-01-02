@@ -1,4 +1,4 @@
-import { scripts } from './src/index';
+import { scripts } from 'scriptful';
 
 
 export default scripts({
