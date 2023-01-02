@@ -29,6 +29,8 @@ export default scripts({
 })
 ```
 
+Note: you may need to add `scripts.ts` to the exclude part of your tsconfig.
+
 ## Usage
 
 ### Define a standard script
