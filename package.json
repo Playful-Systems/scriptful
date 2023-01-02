@@ -11,9 +11,9 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "scriptful build",
-    "dev": "scriptful dev",
-    "release": "scriptful release"
+    "build": "tsc",
+    "dev": "tsc -w",
+    "release": "bumpp"
   },
   "repository": "https://github.com/Playful-Systems/scriptful",
   "files": [
