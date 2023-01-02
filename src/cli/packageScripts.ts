@@ -41,14 +41,14 @@ export const collectItem = (parentKey: string | null, key: string, item: Action 
   if (typeof item === "string" || typeof item === "function") {
     items.push({
       key: compoundKey,
-      value: `trouble ${compoundKey}`
+      value: `scriptful ${compoundKey}`
     })
   } else if (item.type === "scripts") {
     return items = [...items, ...collectionItems(compoundKey, item.opts)];
   } else {
     items.push({
       key: compoundKey,
-      value: `trouble ${compoundKey}`
+      value: `scriptful ${compoundKey}`
     })
   }
 

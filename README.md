@@ -1,25 +1,25 @@
-# Trouble maker
+# Scriptful
 Create better package.json scripts
 
 ## Setup
 
 ### Install the package with one of these
 ```zsh
-npm i -D trouble-maker
+npm i -D scriptful
 ```
 ```zsh
-yarn add -D trouble-maker
+yarn add -D scriptful
 ```
 ```zsh
-pnpm add -D trouble-maker
+pnpm add -D scriptful
 ```
 ```zsh
-bun add -d trouble-maker
+bun add -d scriptful
 ```
 
-### create a `trouble.ts` or `scripts.ts` file in the root of your project
+### create a `scripts.ts` file in the root of your project
 ```ts
-import { scripts } from 'trouble-maker'
+import { scripts } from 'scriptful'
 
 export default scripts({
   // your scripts here
@@ -31,17 +31,17 @@ export default scripts({
 ### Define a standard script
 Yes I know this is boring but we got to start somewhere
 ```ts
-import { scripts } from 'trouble-maker'
+import { scripts } from 'scriptful'
 
 export default scripts({
   "dev": "next dev",
 })
 ```
-Here we just define that calling `trouble start` will run `next dev`
+Here we just define that calling `scriptful start` will run `next dev`
 
 ### Define a script with arguments
 ```ts
-import { scripts, command } from 'trouble-maker'
+import { scripts, command } from 'scriptful'
 
 export default scripts({
   "start": command({
@@ -52,12 +52,12 @@ export default scripts({
   }, "Runs the Next.js development server"),
 })
 ```
-Using the `command` function we get a couple more options, check out the reference below to see what else you can do. Notice the second argument is a description, this will be used in the help menu (`trouble --help`).
+Using the `command` function we get a couple more options, check out the reference below to see what else you can do. Notice the second argument is a description, this will be used in the help menu (`scriptful --help`).
 
 ### Something a little wild
 Now lets imagine a build and deployment process, we want to build the database schema, migrate the database, build the website, run the linting and the tests, and lastly deploy it. This can all be done with one command, and your a wizard at your shell and don't want another dependency. But what about everyone else on your team, are they going to understand the `&&` and `;` and how they work? No, they are not. So lets make a script for them.
 ```ts
-import { scripts, parallel, sequential, variants } from 'trouble-maker'
+import { scripts, parallel, sequential, variants } from 'scriptful'
 
 export default scripts({
   "build": variants({
@@ -79,7 +79,7 @@ export default scripts({
   })
 })
 ```
-Now with a simple `yarn trouble build:prod` we kick the whole process off.
+Now with a simple `yarn scriptful build:prod` we kick the whole process off.
 
 ## Functions
 
@@ -87,7 +87,7 @@ Now with a simple `yarn trouble build:prod` we kick the whole process off.
 This is your root level function, default export this for the cli to find it. In here you pass an object of key value pairs, where the key is the name of the script and the value is the script itself.
 
 ```ts
-import { scripts, parallel, command } from 'trouble-maker'
+import { scripts, parallel, command } from 'scriptful'
 
 export default scripts({
   "dev": parallel([
@@ -116,7 +116,7 @@ type CommandOptions = {
 
 #### Shorthand string command
 ```ts
-import { scripts } from 'trouble-maker'
+import { scripts } from 'scriptful'
 
 export default scripts({
   "dev": "echo very simple, clean and easy",
@@ -125,7 +125,7 @@ export default scripts({
 
 #### Shorthand function command
 ```ts
-import { scripts } from 'trouble-maker'
+import { scripts } from 'scriptful'
 
 const myCommand = async () => {
   // - start a server
@@ -142,7 +142,7 @@ export default scripts({
 
 #### Full command
 ```ts
-import { scripts, command } from 'trouble-maker'
+import { scripts, command } from 'scriptful'
 
 export default scripts({
   "dev": command({
@@ -160,7 +160,7 @@ export default scripts({
 
 #### Full command using function
 ```ts
-import { scripts, command } from 'trouble-maker'
+import { scripts, command } from 'scriptful'
 
 export default scripts({
   "fetch": command({
@@ -184,7 +184,7 @@ export default scripts({
 Since we are in the land of code, we get the fun ability to make decisions. This is done with the `conditional` function. It takes two arguments, the first is a boolean, the second is a command. If the boolean is true, the command will run, if false it will not.
 
 ```ts
-import { scripts, command, conditional } from 'trouble-maker'
+import { scripts, command, conditional } from 'scriptful'
 
 export default scripts({
   "dev": conditional({
@@ -198,7 +198,7 @@ export default scripts({
 Sometimes we need to do something over the lifecycle of say a development environment, we need to setup something, and tear down something afterwards. For example a database. The Lifecycle command lets you do just that.
 
 ```ts
-import { scripts, lifecycle, sequential, command } from 'trouble-maker'
+import { scripts, lifecycle, sequential, command } from 'scriptful'
 
 export default scripts({
   "dev": lifecycle({
@@ -221,7 +221,7 @@ Note: stop gets run under two conditions, when the process is killed, and when t
 when building a long sequential flow, some steps you might not want to run all the time. For example, if you are deploying to firebase, you might not want to run the tests. The optional command lets you do just that. The user will be asked yes or no if they want to run the command. If they say yes, it will run, if no, it will skip.
 
 ```ts
-import { scripts, optional, sequential, command } from 'trouble-maker'
+import { scripts, optional, sequential, command } from 'scriptful'
 
 export default scripts({
   "deploy": sequential([
@@ -242,7 +242,7 @@ It is highly recommended you define a description for the optional command, othe
 Sometimes we want to run multiple commands at the same time. This is where the parallel command comes in. It takes an array of commands and runs them all at the same time.
 
 ```ts
-import { scripts, parallel } from 'trouble-maker'
+import { scripts, parallel } from 'scriptful'
 
 export default scripts({
   "dev": parallel([
@@ -258,7 +258,7 @@ export default scripts({
 If you want to run a function multiple times in a row, here you go.
 
 ```ts
-import { scripts, repeat } from 'trouble-maker'
+import { scripts, repeat } from 'scriptful'
 
 export default scripts({
   "dev": repeat({ run: "echo hello", times: 5 }),
@@ -269,7 +269,7 @@ export default scripts({
 To run multiple commands in a row, use the sequential command. It takes an array of commands and runs them in order.
 
 ```ts
-import { scripts, sequential } from 'trouble-maker'
+import { scripts, sequential } from 'scriptful'
 
 export default scripts({
   "build": sequential([
@@ -286,7 +286,7 @@ export default scripts({
 say you want a "build:debug", "build:local" and "build:prod", use variants function to create them. It takes an object with the variants as keys and the commands as values.
 
 ```ts
-import { scripts, variants, lifecycle, sequential, optional } from 'trouble-maker'
+import { scripts, variants, lifecycle, sequential, optional } from 'scriptful'
 
 export default scripts({
   "build": variants({

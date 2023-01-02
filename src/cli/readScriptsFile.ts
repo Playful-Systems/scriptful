@@ -3,8 +3,8 @@ import { readFile } from "fs/promises";
 const filePaths = [
   './scripts',
   './script',
-  './trouble',
-  './trouble.config',
+  './scriptful',
+  './scriptful.config',
 ] as const
 
 const fileExtensions = [

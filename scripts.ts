@@ -1,4 +1,4 @@
-import { scripts } from 'trouble-maker';
+import { scripts } from './src/index';
 
 
 export default scripts({

@@ -1,19 +1,21 @@
 {
-  "name": "trouble-maker",
+  "name": "scriptful",
   "version": "1.0.0",
   "description": "Better package.json scripts for complex projects",
   "bin": {
-    "trouble": "./dist/cli.js",
-    "trouble-maker": "./dist/cli.js"
+    "script": "./dist/cli.js",
+    "scriptful": "./dist/cli.js",
+    "task": "./dist/cli.js",
+    "action": "./dist/cli.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "trouble build",
-    "dev": "trouble dev",
-    "release": "trouble release"
+    "build": "scriptful build",
+    "dev": "scriptful dev",
+    "release": "scriptful release"
   },
-  "repository": "https://github.com/Playful-Systems/trouble-maker",
+  "repository": "https://github.com/Playful-Systems/scriptful",
   "files": [
     "dist"
   ],
@@ -27,9 +29,7 @@
     "interface",
     "npm",
     "package.json",
-    "trouble-maker",
-    "trouble",
-    "troublemaker"
+    "scriptful"
   ],
   "author": {
     "name": "Playful Systems",
