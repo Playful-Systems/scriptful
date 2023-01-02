@@ -28,6 +28,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - uses: pnpm/action-setup@v2
       - run: pnpm install
-      - run: pnpm publish
+      - run: pnpm publish --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
