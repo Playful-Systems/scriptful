@@ -2,6 +2,11 @@
   "name": "scriptful",
   "version": "1.0.6",
   "description": "Better package.json scripts for complex projects",
+  "scripts": {
+    "build": "npx scriptful build",
+    "dev": "npx scriptful dev",
+    "release": "npx scriptful release"
+  },
   "bin": {
     "script": "./dist/cli.js",
     "scriptful": "./dist/cli.js",
@@ -10,11 +15,6 @@
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc -w",
-    "release": "bumpp"
-  },
   "repository": "https://github.com/Playful-Systems/scriptful",
   "files": [
     "dist"
