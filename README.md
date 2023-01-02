@@ -50,7 +50,7 @@ export default scripts({
   "start": command({
     run: "next dev",
     env: {
-      PORT: 5000,
+      PORT: "5000",
     },
   }, "Runs the Next.js development server"),
 })
@@ -60,7 +60,7 @@ Using the `command` function we get a couple more options, check out the referen
 ### Something a little wild
 Now lets imagine a build and deployment process, we want to build the database schema, migrate the database, build the website, run the linting and the tests, and lastly deploy it. This can all be done with one command, and your a wizard at your shell and don't want another dependency. But what about everyone else on your team, are they going to understand the `&&` and `;` and how they work? No, they are not. So lets make a script for them.
 ```ts
-import { scripts, parallel, sequential, variants } from 'scriptful'
+import { scripts, parallel, sequential, variants, command } from 'scriptful'
 
 export default scripts({
   "build": variants({
@@ -151,7 +151,7 @@ export default scripts({
   "dev": command({
     run: "echo many more options",
     env: {
-      PORT: 5000,
+      PORT: "5000",
     },
     envFile: ".env",
     delay: 1000,
@@ -173,7 +173,7 @@ export default scripts({
       console.log(data)
     },
     env: {
-      PORT: 5000,
+      PORT: "5000",
     },
     envFile: ".env",
     delay: 1000,
@@ -187,7 +187,7 @@ export default scripts({
 Since we are in the land of code, we get the fun ability to make decisions. This is done with the `conditional` function. It takes two arguments, the first is a boolean, the second is a command. If the boolean is true, the command will run, if false it will not.
 
 ```ts
-import { scripts, command, conditional } from 'scriptful'
+import { conditional, scripts } from 'scriptful'
 
 export default scripts({
   "dev": conditional({
@@ -201,7 +201,7 @@ export default scripts({
 Sometimes we need to do something over the lifecycle of say a development environment, we need to setup something, and tear down something afterwards. For example a database. The Lifecycle command lets you do just that.
 
 ```ts
-import { scripts, lifecycle, sequential, command } from 'scriptful'
+import { command, lifecycle, scripts, sequential } from 'scriptful'
 
 export default scripts({
   "dev": lifecycle({
@@ -224,7 +224,7 @@ Note: stop gets run under two conditions, when the process is killed, and when t
 when building a long sequential flow, some steps you might not want to run all the time. For example, if you are deploying to firebase, you might not want to run the tests. The optional command lets you do just that. The user will be asked yes or no if they want to run the command. If they say yes, it will run, if no, it will skip.
 
 ```ts
-import { scripts, optional, sequential, command } from 'scriptful'
+import { command, optional, scripts, sequential } from 'scriptful'
 
 export default scripts({
   "deploy": sequential([
@@ -245,7 +245,7 @@ It is highly recommended you define a description for the optional command, othe
 Sometimes we want to run multiple commands at the same time. This is where the parallel command comes in. It takes an array of commands and runs them all at the same time.
 
 ```ts
-import { scripts, parallel } from 'scriptful'
+import { parallel, scripts } from 'scriptful'
 
 export default scripts({
   "dev": parallel([
@@ -261,7 +261,7 @@ export default scripts({
 If you want to run a function multiple times in a row, here you go.
 
 ```ts
-import { scripts, repeat } from 'scriptful'
+import { repeat, scripts } from 'scriptful'
 
 export default scripts({
   "dev": repeat({ run: "echo hello", times: 5 }),
@@ -289,7 +289,7 @@ export default scripts({
 say you want a "build:debug", "build:local" and "build:prod", use variants function to create them. It takes an object with the variants as keys and the commands as values.
 
 ```ts
-import { scripts, variants, lifecycle, sequential, optional } from 'scriptful'
+import { lifecycle, optional, scripts, sequential, variants } from 'scriptful'
 
 export default scripts({
   "build": variants({
