@@ -1,7 +1,8 @@
-import { scripts, variants } from "scriptful"
+import { scripts } from "scriptful"
 
 export default scripts({
   "build": "tsc",
   "dev": "tsc -w",
+  "test": "vitest",
   "release": "bumpp"
 })
