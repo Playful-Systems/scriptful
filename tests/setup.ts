@@ -63,6 +63,7 @@ export const setup = async (script: string) => {
     runCli,
     cleanup,
     tempFolder,
-    writeFile
+    writeFile,
+    script
   }
 }

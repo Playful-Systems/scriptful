@@ -1,4 +1,5 @@
-import { scripts, command as c, variants } from "scriptful"
+import { scripts, command as c, variants, lifecycle } from "scriptful"
+import fs from "fs/promises"
 
 export default scripts({
   "build": c({ run: "tsc" }, "Build the project"),
@@ -6,7 +7,10 @@ export default scripts({
   "setup": variants({
     "dev": c({ run: "pnpm link ." }, "Make the package available")
   }),
-  "test": c({ run: "vitest" }, "Run the tests"),
+  "test": lifecycle({
+    run: c({ run: "vitest" }),
+    stop: async () => fs.rm(".tmp-test-dir", { recursive: true }),
+  }, "Run the tests"),
   "workflow": variants({
     "test": c({ run: "act -j run-tests" }, "Run the github action 'run-tests' using docker https://github.com/nektos/act"),
   }),

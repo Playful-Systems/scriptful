@@ -5,10 +5,11 @@
   "scripts": {
     "build": "tsc",
     "dev": "npx scriptful dev",
-    "setup:dev": "scriptful setup:dev",
-    "test": "vitest",
-    "workflow:test": "scriptful workflow:test",
-    "release": "scriptful release"
+    "setup:dev": "npx scriptful setup:dev",
+    "test": "npx scriptful test",
+    "test:ci": "vitest",
+    "workflow:test": "npx scriptful workflow:test",
+    "release": "npx scriptful release"
   },
   "bin": {
     "script": "./dist/cli.js",

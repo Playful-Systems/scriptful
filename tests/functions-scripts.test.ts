@@ -1,7 +1,7 @@
 import { test, expect } from "vitest"
 import { setup } from "./setup"
 
-test('a boring scripts with only one script', async () => {
+test('the scripts root level function', async () => {
   const { runCli, cleanup } = await setup(`
     import { scripts, parallel, command } from 'scriptful'
 
