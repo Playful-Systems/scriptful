@@ -5,7 +5,7 @@
   "scripts": {
     "build": "tsc",
     "dev": "npx scriptful dev",
-    "test": "npx scriptful test",
+    "test": "vitest",
     "release": "npx scriptful release"
   },
   "bin": {
