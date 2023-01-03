@@ -37,20 +37,13 @@ test('script with command arguements', async () => {
   expect(runningProd.stdout).toContain("prisma migrate deploy postgres://localhost:5432/mydb")
   expect(runningProd.stdout).toContain("firebase deploy")
 
-  console.log(runningProd)
-
   const runningHelp = await runCli("scriptful --help")
 
   expect(runningHelp.stdout).toContain("Build, Test and Deploy the website")
 
-  console.log(runningHelp)
-
   const runningGenerate = await runCli("scriptful --generate")
 
   expect(runningGenerate.stdout).toContain(`"build:prod": "scriptful build:prod"`)
-
-  console.log(runningGenerate)
-
 
   await cleanup()
 
