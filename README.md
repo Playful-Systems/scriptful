@@ -86,6 +86,20 @@ export default scripts({
 ```
 Now with a simple `yarn scriptful build:prod` we kick the whole process off.
 
+## CLI Commands
+
+### `scriptful --help`
+Using your scripts.ts file, it will generate a help menu for you, showing all the scripts and their descriptions.
+
+### `scriptful --version`
+Prints out the version of scriptful you are using.
+
+### `scriptful --generate`
+Parses in your scripts.ts file and generates the scripts section of the package.jon file for you to copy over.
+
+### `scriptful <script>`
+Runs the script you pass in, if it exists.
+
 ## Functions
 
 ### Scripts
@@ -322,3 +336,8 @@ export default scripts({
   }),
 })
 ```
+
+## Examples in the wild
+(feel free to pr to add yours)
+
+- [Playful-Systems/scriptful (Ourselves)](https://github.com/Playful-Systems/scriptful/blob/main/scripts.ts)
