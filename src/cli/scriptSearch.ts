@@ -12,6 +12,10 @@ export const scriptSearch = (getScripts: ScriptsFn, commandParts: string[]): Scr
 
   const item = scripts[key];
 
+  if (item === undefined) {
+    throw new Error(`Could not find command: ${commandParts.join(':')}`);
+  }
+
   if (typeof item === "string" || typeof item === "function") {
     return makeCommand(item)
   }

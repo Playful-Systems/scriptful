@@ -45,6 +45,8 @@ export const cli = async () => {
       console.log(`Perhaps you are looking for one of these: \n`)
       HelpScreen(getScripts)
       return;
+    } else {
+      throw error
     }
   }
 
