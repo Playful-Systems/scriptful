@@ -15,4 +15,6 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - uses: pnpm/action-setup@v2
       - run: pnpm install
+      - run: pnpm build
+      - run: pnpm link .
       - run: pnpm test
