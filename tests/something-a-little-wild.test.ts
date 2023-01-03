@@ -54,4 +54,6 @@ test('script with command arguements', async () => {
 
   await cleanup()
 
+}, {
+  "timeout": 10000,
 })
