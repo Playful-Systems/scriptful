@@ -8,9 +8,9 @@ export const setup = async (script: string) => {
 
   try {
     // if the root dir doesn't exist, create it
-    await fs.access(rootTestDir)
-  } catch {
     await fs.mkdir(rootTestDir)
+  } catch {
+    // if the dir already exists, ignore the error
   }
 
   // create temp directory
