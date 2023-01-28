@@ -11,7 +11,8 @@ export const sequential = (opts: SequentialOptions, description?: string) => {
     description,
     fn: async (props: FunctionCallProps) => {
       for (const action of opts) {
-        await (makeFunction(action))(props)
+        const fn = makeFunction(action)
+        await fn(props)
       }
     }
   } as const

@@ -50,36 +50,46 @@ export const command = (opts: CommandOptions, description?: string) => {
         await sleep(opts.delay)
       }
 
-      // an action can either be a function or a string
-      // if its a function, just run it
-      // if its a string, spawn a shell to run it in
+      try {
 
-      if (typeof opts.run === "function") {
+        // an action can either be a function or a string
+        // if its a function, just run it
+        // if its a string, spawn a shell to run it in
 
-        // save the original state
-        const originalCwd = process.cwd()
-        const originalEnv = process.env
+        if (typeof opts.run === "function") {
 
-        // change the state to whats requested
-        process.chdir(cwd);
-        process.env = env;
+          // save the original state
+          const originalCwd = process.cwd()
+          const originalEnv = process.env
 
-        // run the function
-        const output = await opts.run()
+          // change the state to whats requested
+          process.chdir(cwd);
+          process.env = env;
 
-        // reset the state
-        process.chdir(originalCwd);
-        process.env = originalEnv;
+          // run the function
+          const output = await opts.run()
 
-        return output
+          // reset the state
+          process.chdir(originalCwd);
+          process.env = originalEnv;
+
+          return output
+        }
+
+        return run(opts.run, {
+          showLogs: !opts.hideLogs,
+        }, {
+          cwd,
+          env
+        })
+
+      } catch (error: any) {
+
+        console.error('error', error)
+
+        throw error
+
       }
-
-      return run(opts.run, {
-        showLogs: !opts.hideLogs,
-      }, {
-        cwd,
-        env
-      })
     }
   } as const
 }

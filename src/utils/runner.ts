@@ -18,11 +18,23 @@ export const run = (task: string, options?: Options, spawnOptions?: SpawnOptions
     })
 
     child.on("error", (error) => {
-      reject(error)
+      reject({ task, error })
     })
 
     child.on("close", (code, signal) => {
-      resolve({ task, code, signal })
+      if (code === 0) {
+        resolve({ task, code, signal })
+      } else {
+        reject({ task, code, signal })
+      }
     })
+
+    // child.on("exit", (code, signal) => {
+    //   if (code === 0) {
+    //     resolve({ task, code, signal })
+    //   } else {
+    //     reject({ task, code, signal })
+    //   }
+    // })
   })
 }

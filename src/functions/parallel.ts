@@ -10,7 +10,7 @@ export const parallel = (opts: ParallelOptions, description?: string) => {
     opts,
     description,
     fn: async (props: FunctionCallProps) => {
-      await Promise.all(opts.map(action => (makeFunction(action))(props)))
+      await Promise.allSettled(opts.map(action => (makeFunction(action))(props)))
     }
   } as const
 }

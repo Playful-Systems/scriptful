@@ -40,7 +40,7 @@ export const cli = async () => {
     // run the function
     await func({ command })
   } catch (error: any) {
-    if (error.message.includes("Could not find command")) {
+    if (error.message?.includes("Could not find command")) {
       console.log(error.message)
       console.log(`Perhaps you are looking for one of these: \n`)
       HelpScreen(getScripts)
