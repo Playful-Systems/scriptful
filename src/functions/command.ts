@@ -13,7 +13,7 @@ export type CommandOptions = {
   env?: Record<string, string> // env vars to set
   cwd?: string // the directory to run the command in
   hideLogs?: boolean // hide or show the logs
-  // restartOnFail?: boolean // restart the command if it fails
+  continueOnFailure?: boolean // defaults to false
 }
 
 const combineEnv = async (env: Record<string, string> = {}, envFile?: string) => {
@@ -76,18 +76,24 @@ export const command = (opts: CommandOptions, description?: string) => {
           return output
         }
 
-        return run(opts.run, {
+        const output = await run(opts.run, {
           showLogs: !opts.hideLogs,
         }, {
           cwd,
           env
         })
 
+        return output
+
       } catch (error: any) {
 
-        console.error('error', error)
+        const shouldContinue = opts.continueOnFailure ?? false
 
-        throw error
+        if (shouldContinue) {
+          console.error(`Command failed: ${opts.run} continuing`)
+        } else {
+          throw new Error(`Command failed: ${opts.run} stopping`)
+        }
 
       }
     }

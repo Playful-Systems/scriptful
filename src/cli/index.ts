@@ -45,6 +45,9 @@ export const cli = async () => {
       console.log(`Perhaps you are looking for one of these: \n`)
       HelpScreen(getScripts)
       return;
+    } else if (error.message?.includes("Command failed")) {
+      console.log(error.message)
+      return;
     } else {
       throw error
     }
