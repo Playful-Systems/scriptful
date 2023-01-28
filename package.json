@@ -1,6 +1,6 @@
 {
   "name": "scriptful",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Better package.json scripts for complex projects",
   "scripts": {
     "build": "tsc",
